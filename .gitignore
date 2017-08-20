@@ -7,3 +7,4 @@
 *.lib
 *.dll
 vgcore.*
+*.ali
