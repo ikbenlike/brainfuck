@@ -8,8 +8,11 @@ with Ada.Strings.Unbounded;
 
 procedure Brainfuck is
 
+    type Byte is range 0 .. 255;
+    type ByteArray is array(Natural range <>) of Byte;
+
     package war is
-        
+        ar : ByteArray(1 .. 30000) := (others => 0);
     end war;
 
     function readfile(fname : String) return String is
@@ -26,12 +29,10 @@ procedure Brainfuck is
         return String(contents);
     end readfile;
 
-    type Byte is range 0 .. 255;
-    type ByteArray is array(Natural range <>) of Byte;
 
-    type brainfuck_t(size : Natural := 30000) is 
+    type brainfuck_t is 
         record
-            data : ByteArray(1 .. size);
+            data : ByteArray(1 .. 30000) := war.ar;
             iptr : Natural := 1;
             dptr : Natural := 1;
         end record;
@@ -54,7 +55,8 @@ begin
     code := Ada.Strings.Unbounded.To_Unbounded_String(readfile(Ada.Command_Line.Argument(Number => 1)));
     code_L := Ada.Strings.Unbounded.Length(code);
 
-    while bf.iptr < code_L loop 
+    while bf.iptr < code_L loop
+        count := 1;
         case Ada.Strings.Unbounded.Element(code, bf.iptr) is
             when '>' =>
                 bf.dptr := bf.dptr + 1;
@@ -63,7 +65,7 @@ begin
             when '+' =>
                 bf.data(bf.dptr) := bf.data(bf.dptr) + 1;
             when '-' =>
-                bf.data(bf.dptr) := bf.data(bf.dptr) + 1;
+                bf.data(bf.dptr) := bf.data(bf.dptr) - 1;
             when '.' =>
                 Ada.Text_IO.Put(Character'Val(bf.data(bf.dptr)));
             when ',' =>
