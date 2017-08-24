@@ -5,9 +5,7 @@ with Ada.Directories;
 with Ada.Command_Line;
 with Ada.Strings.Unbounded;
 
-
 procedure Brainfuck is
-
     type Byte is range 0 .. 255;
     type ByteArray is array(Natural range <>) of Byte;
 
@@ -29,7 +27,6 @@ procedure Brainfuck is
         return String(contents);
     end readfile;
 
-
     type brainfuck_t is 
         record
             data : ByteArray(1 .. 30000) := war.ar;
@@ -44,7 +41,6 @@ procedure Brainfuck is
     index : Natural := 1;
     count : Integer := 1;
     tmp_str : String(1 .. 2);
-
 begin
     if Ada.Command_Line.Argument_Count < 1 then 
         Ada.Text_IO.Put_Line("Error: please provide a file to interpret");
@@ -100,5 +96,4 @@ begin
         end case;
         bf.iptr := bf.iptr + 1;
     end loop;
-
 end Brainfuck;
