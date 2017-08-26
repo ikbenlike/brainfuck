@@ -7,4 +7,5 @@ A collection of brainfuck interpreters in multiple languages.
 * C
 * F#
 * Python
+* Ruby
 * Rust
