@@ -29,6 +29,9 @@ void runbrainfuck(brainfuck bf){
                 write(to!char(bf.data[bf.dptr]));
                 break;
             case ',':
+                char[1] tmp;
+                stdin.rawRead(tmp);
+                bf.data[bf.dptr] = to!byte(tmp[0]);
                 break;
             case '[':
                 if(bf.data[bf.dptr] == 0){
