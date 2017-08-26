@@ -9,6 +9,7 @@ A collection of brainfuck interpreters in multiple languages.
 * D
 * F#
 * Lua
+* Perl 6
 * Python
 * Ruby
 * Rust
