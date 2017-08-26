@@ -1,5 +1,3 @@
-file = ARGV[0]
-
 class BrainFuck
     def initialize(code)
         @code = code
@@ -23,11 +21,8 @@ class BrainFuck
                     if @data[@dptr] == 0 then
                         @iptr += 1
                         while count > 0
-                            if @code[@iptr] == '['
-                                count += 1
-                            elsif @code[@iptr] == ']' 
-                                count -= 1
-                            end
+                            count += 1 if @code[@iptr] == '['
+                            count -= 1 if @code[@iptr] == ']'
                             @iptr += 1
                         end
                         @iptr -= 1
@@ -36,11 +31,8 @@ class BrainFuck
                     if @data[@dptr] != 0 then
                         @iptr -= 1
                         while count > 0
-                            if @code[@iptr] == ']'
-                                count += 1
-                            elsif @code[@iptr] == '['
-                                count -= 1
-                            end
+                            count += 1 if @code[@iptr] == ']'
+                            count -= 1 if @code[@iptr] == '['
                             @iptr -= 1
                         end
                     end
@@ -50,4 +42,4 @@ class BrainFuck
     end
 end
 
-BrainFuck.new(File.read(file)).run()
+BrainFuck.new(File.read(ARGV[0])).run()
