@@ -14,6 +14,7 @@ function runbrainfuck(code)
     local dptr = 1
     local iptr = 1
     while iptr < len do
+        local count = 1
         if code:sub(iptr, iptr) == '>' then
             dptr = dptr + 1
         elseif code:sub(iptr, iptr) == '<' then
@@ -27,11 +28,33 @@ function runbrainfuck(code)
         elseif code:sub(iptr, iptr) == ',' then
             data[dptr] = string.byte(io.read(1))
         elseif code:sub(iptr, iptr) == '[' then
+            if data[dptr] == 0 then
+                iptr = iptr + 1
+                while count > 0 do
+                    if code:sub(iptr, iptr) == '[' then
+                        count = count + 1    
+                    elseif code:sub(iptr, iptr) == ']' then
+                        count = count -1
+                    end
+                    iptr = iptr + 1
+                end
+                iptr = iptr + 1
+            end
         elseif code:sub(iptr, iptr) == ']' then
+            if data[dptr] ~= 0 then
+                iptr = iptr - 1
+                while count > 0 do
+                    if code:sub(iptr, iptr) == ']' then
+                        count = count + 1
+                    elseif code:sub(iptr, iptr) == '[' then
+                        count = count - 1
+                    end
+                    iptr = iptr - 1
+                end
+            end
         end
         iptr = iptr + 1
     end
 end
 
-r = readfile(arg[1])
-runbrainfuck(r)
+runbrainfuck(readfile(arg[1]))
