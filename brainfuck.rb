@@ -11,20 +11,43 @@ class BrainFuck
     def run()
         len = @code.length
         while @iptr < len
+            count = 1
             case @code[@iptr]
                 when '>' then @dptr += 1
                 when '<' then @dptr -= 1
                 when '+' then @data[@dptr] += 1
                 when '-' then @data[@dptr] -= 1
                 when '.' then print @data[@dptr].chr
-                when ',' then nil
-                when '[' then nil
-                when ']' then nil
+                when ',' then @data[@dptr] = STDIN.gets.chomp[0].ord
+                when '['
+                    if @data[@dptr] == 0 then
+                        @iptr += 1
+                        while count > 0
+                            if @code[@iptr] == '['
+                                count += 1
+                            elsif @code[@iptr] == ']' 
+                                count -= 1
+                            end
+                            @iptr += 1
+                        end
+                        @iptr -= 1
+                    end
+                when ']'
+                    if @data[@dptr] != 0 then
+                        @iptr -= 1
+                        while count > 0
+                            if @code[@iptr] == ']'
+                                count += 1
+                            elsif @code[@iptr] == '['
+                                count -= 1
+                            end
+                            @iptr -= 1
+                        end
+                    end
             end
             @iptr += 1
         end
     end
 end
 
-bf = BrainFuck.new(File.read(file))
-bf.run()
+BrainFuck.new(File.read(file)).run()
