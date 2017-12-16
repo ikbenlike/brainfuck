@@ -11,5 +11,6 @@ A collection of brainfuck interpreters in multiple languages.
 * Lua
 * Perl 6
 * Python
+* Racket
 * Ruby
 * Rust
