@@ -39,7 +39,7 @@
                 [(#\+) (run-bf code (+ iptr 1) (replace-item data dptr (+ (nth data dptr) 1)) dptr len)]
                 [(#\-) (run-bf code (+ iptr 1) (replace-item data dptr (- (nth data dptr) 1)) dptr len)]
                 [(#\.) (printf "~a" (integer->char (nth data dptr)))(run-bf code (+ iptr 1) data dptr len)]
-                [(#\,) (run-bf code (+ iptr 1) (replace-item data dptr (char->integer (string-ref (read-line (current-input-port) 'any) 0))) dptr len)]
+                [(#\,) (run-bf code (+ iptr 1) (replace-item data dptr (char->integer (read-char (current-input-port)))) dptr len)]
                 [(#\[) (if (= (nth data dptr) 0)(run-bf code (retrieve-right code iptr 1) data dptr len)(run-bf code (+ iptr 1) data dptr len))]
                 [(#\]) (if (not (= (nth data dptr) 0))(run-bf code (retrieve-left code (- iptr 1) 1) data dptr len)(run-bf code (+ iptr 1) data dptr len))]
                 [else (run-bf code (+ iptr 1) data dptr len)]))
