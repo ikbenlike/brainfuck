@@ -10,4 +10,6 @@ vgcore.*
 *.ali
 *.exe
 *.hi
+*.class
+*.jar
 

@@ -39,7 +39,8 @@ class Main {
                         this.data[this.dptr] = (byte)System.in.read();
                         break;
                     case '[':
-                        if(this.data[this.dptr] != 0){
+                        count = 1;
+                        if(this.data[this.dptr] == 0){
                             this.iptr++;
                             while(count > 0){
                                 if(this.code.charAt(this.iptr) == '['){
@@ -54,7 +55,8 @@ class Main {
                         }
                         break;
                     case ']':
-                        if(this.data[this.dptr] == 0){
+                        count = 1;
+                        if(this.data[this.dptr] != 0){
                             this.iptr--;
                             while(count > 0){
                                 if(this.code.charAt(this.iptr) == ']'){
