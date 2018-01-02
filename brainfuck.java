@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.nio.file.*;
 
-class Main {
+class brainfuck {
     
     public static class BrainFuck {
         private String code;
@@ -79,7 +79,7 @@ class Main {
 
     public static void main(String[] args) throws IOException {
         String _c = new String(Files.readAllBytes(Paths.get(args[1])));
-        BrainFuck bf = new Main.BrainFuck(_c);
+        BrainFuck bf = new BrainFuck(_c);
         bf.run();
     }
 }

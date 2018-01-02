@@ -1,11 +1,10 @@
 build:
 	gnatmake brainfuck.adb -o ./build/brainfuck-ada.exe
 	gcc brainfuck.c -o ./build/brainfuck-c.exe
-	dmd brainfuck.d -o- -of./build/brainfuck-d.exe
+	dmd brainfuck.d -of./build/brainfuck-d.exe
 	fsc brainfuck.fs -o ./build/brainfuck-fs.exe
 	javac brainfuck.java -d ./build
-	mv ./build/Main.class ./build/brainfuck-java.class
-	rm ./build/Main$$BrainFuck.class
+	rm ./build/brainfuck$$BrainFuck.class
 	rustc brainfuck.rs -o ./build/brainfuck-rs.exe
 
 .PHONY: clean
