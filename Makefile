@@ -4,7 +4,6 @@ build:
 	dmd brainfuck.d -of./build/brainfuck-d.exe
 	fsc brainfuck.fs -o ./build/brainfuck-fs.exe
 	javac brainfuck.java -d ./build
-	rm ./build/brainfuck$$BrainFuck.class
 	rustc brainfuck.rs -o ./build/brainfuck-rs.exe
 
 .PHONY: clean

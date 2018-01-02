@@ -14,6 +14,7 @@
     (if (= amount 0)
         (+ index 1)
         (let ((c (substring code (- index 1) index)))
+            (printf c)
             (if (string=? c "[")
                 (retrieve-left code (- index 1)(- amount 1))
                 (if (string=? c "]")
