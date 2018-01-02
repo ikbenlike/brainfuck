@@ -16,3 +16,4 @@ clean:
 	rm ./build/*.dll
 	rm ./build/*.pdb
 	rm *.ali
+	rm *.o
