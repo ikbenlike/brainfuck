@@ -13,4 +13,5 @@ vgcore.*
 *.class
 *.jar
 *.pdb
+*.obj
 
