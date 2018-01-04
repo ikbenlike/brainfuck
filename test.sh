@@ -26,6 +26,13 @@ if [ $platform == "windows" ]; then
     echo -n "[passed  ] "
     if [ "$outact" == "$out" ]; then echo -e 'Yes\n'; else echo -e 'No\n'; fi;
 
+    echo "[language] Common Lisp"
+    echo "[input   ] `cat $code`"
+    outact=$(sbcl --script ./brainfuck.lisp $code)
+    echo "[output  ] $outact"
+    echo -n "[passed  ] "
+    if [ "$outact" == "$out" ]; then echo -e 'Yes\n'; else echo -e 'No\n'; fi;
+
     echo "[language] D"
     echo "[input   ] `cat $code`"
     outact=$(./build/brainfuck-d $code)
@@ -60,6 +67,7 @@ if [ $platform == "windows" ]; then
     echo "[input   ] `cat $code`"
     outact=$(./build/brainfuck-odin.exe $code)
     echo "[output  ] $outact"
+    echo -n "[passed  ] "
     if [ "$outact" == "$out" ]; then echo -e 'Yes\n'; else echo -e 'No\n'; fi;
 
     echo "[language] Perl 6"
