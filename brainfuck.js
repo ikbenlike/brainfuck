@@ -1,18 +1,13 @@
 const fs = require("fs");
 const readline = require("readline");
 
-/*const io = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});*/
-
 function bf_run(code){
     let iptr = 0;
     let dptr = 0;
     let data = new Array(30000);
     for(var i = 0; i < data.length; i++) data[i] = 0;
 
-    while(iptr < code.length){
+    for(; iptr < code.length; iptr++){
         let count = 1;
         switch(code[iptr]){
             case '>':
@@ -70,7 +65,6 @@ function bf_run(code){
             default:
                 break;
         }
-        iptr++;
     }
 }
 
